@@ -1,4 +1,5 @@
-package gerico
+package easyrepro
+
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
@@ -30,8 +31,6 @@ import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords
 import com.kms.katalon.core.util.KeywordUtil
 
-import internal.GlobalVariable
-
 import MobileBuiltInKeywords as Mobile
 import WSBuiltInKeywords as WS
 import WebUiBuiltInKeywords as WebUI
@@ -41,27 +40,16 @@ import java.text.MessageFormat
 import org.openqa.selenium.By.ById
 import org.openqa.selenium.By.ByTagName
 
+
 /**
- * Roadmap
+ *  Roadmap
  * OpenViewPicker	[ ]
  * SwitchView		[ ]
- * OpenChart		[ ]
- * CloseChart		[ ]
- * Pin				[ ]
  * Search			[x]
  * Sort				[ ]
- * OpenRecord		[x]
- * SelectRecord		[ ]
- * FilterByLetter	[ ]
- * FilterByAll		[ ]
- * EnableFilter		[ ]
- * SwitchChart		[ ]
- * 
- * @author 13rice
- *
+ * OpenGridRow		[x]
  */
-public class XrmGridPage {
-	
+public class XrmRelatedPage {
 	
 	static WebDriver driver = DriverFactory.getWebDriver()
 	
@@ -70,55 +58,41 @@ public class XrmGridPage {
 	/// </summary>
 	/// <param name="searchCriteria">The search criteria.</param>
 	/// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-	/// <example>xrmBrowser.Grid.Search("Test API")</example>
+	/// <example>xrmBrowser.Related.Search("F");</example>
 	@Keyword
 	public static boolean Search(String searchCriteria, int thinkTime)
 	{
+		/*
+		var inputs = driver.FindElements(By.TagName("input"))
+		var input = inputs.Where(x => x.GetAttribute("id").Contains("findCriteria")).FirstOrDefault()
+	
+		input.SendKeys(searchCriteria)
+		var searchImg = driver.FindElement(By.Id(input.GetAttribute("id") + "Img"))
+		searchImg?.Click()
+		return true
+		*/
 		WebUI.delay(thinkTime)
-
-		WebUI.waitForElementClickable(findTestObject("Reference/Grid/FindCriteria"), thinkTime)
 		
-		WebUI.clearText(findTestObject("Reference/Grid/FindCriteria"))
-		WebUI.sendKeys(findTestObject("Reference/Grid/FindCriteria"), searchCriteria)
-		WebUI.sendKeys(findTestObject("Reference/Grid/FindCriteria"), Keys.chord(Keys.ENTER))
-
+		WebUI.waitForElementClickable(findTestObject("Reference/Grid/FindCriteriaRelated"), thinkTime)
+		//*[@id="crmGrid_tgz_tgz_offer_tgz_quotation_offerid_findCriteria"]
+		//input[starts-with(@id, 'crmGrid_') and 'findCriteria' = substring(@id, string-length(@id) - string-length('findCriteria') +1)]
+		
+		WebUI.clearText(findTestObject("Reference/Grid/FindCriteriaRelated"))
+		WebUI.sendKeys(findTestObject("Reference/Grid/FindCriteriaRelated"), searchCriteria)
+		WebUI.sendKeys(findTestObject("Reference/Grid/FindCriteriaRelated"), Keys.chord(Keys.ENTER))
+		
 		return true
 	}
-
-	/*
-	/// <summary>
-	/// Sorts the specified column name.
-	/// </summary>
-	/// <param name="columnName">Name of the column.</param>
-	/// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-	/// <example>xrmBrowser.Grid.Sort("Account Name")</example>
-	public static boolean Sort(string columnName,int thinkTime = Constants.DefaultThinkTime)
-	{
-		Browser.ThinkTime(thinkTime)
-
-		def sortCols = driver.FindElements(By.ClassName(Elements.CssClass[Reference.Grid.SortColumn]))
-		def sortCol = sortCols.FirstOrDefault(x => x.Text == columnName)
-		
-		if (sortCol == null)
-			throw new InvalidOperationException($"Column: {columnName} Does not exist")
-		else
-			sortCol.Click()
-		return true
-	}*/
-
+	
 	/// <summary>
 	/// Opens the grid record.
 	/// </summary>
 	/// <param name="index">The index.</param>
 	/// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-	/// <example>xrmBrowser.Grid.OpenRecord(0)</example>
 	@Keyword
-	public static boolean OpenRecord(int index, int thinkTime)
+	public static boolean OpenGridRow(int index, int thinkTime)
 	{
 		WebUI.delay(thinkTime)
-
-		def rowType = WebUI.getAttribute(findTestObject("Reference/Grid/FirstRow"),  "otypename")
-		//def rowType = driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.FirstRow])).GetAttribute("otypename")
 
 		def itemsTable = driver.findElement(ByXPath.xpath(findTestObject("Reference/Grid/GridBodyTable").findPropertyValue("xpath")))
 		def links = itemsTable.findElements(ByTagName.tagName("a"))
@@ -126,7 +100,7 @@ public class XrmGridPage {
 		def currentIndex = 0
 		def clicked = false
 
-		for(link in links)
+		for (link in links)
 		{
 			def id = link.getAttribute("id")
 
@@ -149,19 +123,9 @@ public class XrmGridPage {
 			}
 		}
 
-		if (clicked)
+		if (!clicked)
 		{
-			if (rowType != "report")
-			{
-				/*SwitchToContent()
-				driver.WaitForPageToLoad()
-				driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Entity.Form]))*/
-			}
-			return true
-		}
-		else
-		{
-		   throw new InvalidOperationException("No record with the index '" + index + "' exists.")
+		   throw new NoSuchElementException("No record with the index '" + index + "' exists.")
 		}
 		
 		return true

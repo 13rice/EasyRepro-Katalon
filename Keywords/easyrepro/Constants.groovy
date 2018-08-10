@@ -1,13 +1,9 @@
-package gerico
+package easyrepro
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.WebElement
-import org.openqa.selenium.support.ui.ExpectedCondition
 
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
@@ -29,22 +25,8 @@ import MobileBuiltInKeywords as Mobile
 import WSBuiltInKeywords as WS
 import WebUiBuiltInKeywords as WebUI
 
-public class WaitForTextDifferent implements ExpectedCondition {
+public class Constants {
+	def public static int DefaultThinkTime = 2
 
-	String differentText = ""
-	WebElement element = null
-
-	public WaitForTextDifferent(WebElement element, String differentText) {
-		this.differentText = differentText
-		this.element = element
-
-		if (element == null) {
-			System.out.println("element null")
-		}
-	}
-
-	@Override
-	public Boolean apply(WebDriver driver) {
-		return element != null && element.text != differentText
-	}
+	def public static int WaitTimeOut = 2
 }

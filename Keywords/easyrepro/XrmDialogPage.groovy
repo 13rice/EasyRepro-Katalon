@@ -1,9 +1,20 @@
-package gerico
+package easyrepro
+
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+
+import org.apache.poi.openxml4j.exceptions.InvalidOperationException
+import org.junit.After
+import org.openqa.selenium.Keys
+import org.openqa.selenium.WebDriver
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.By.ByClassName
+import org.openqa.selenium.By.ByCssSelector
+import org.openqa.selenium.By.ByName
+import org.openqa.selenium.By.ByXPath
 
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
@@ -17,46 +28,38 @@ import com.kms.katalon.core.testdata.TestDataFactory
 import com.kms.katalon.core.testobject.ObjectRepository
 import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords
+import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords
-
-import internal.GlobalVariable
+import com.kms.katalon.core.util.KeywordUtil
 
 import MobileBuiltInKeywords as Mobile
 import WSBuiltInKeywords as WS
 import WebUiBuiltInKeywords as WebUI
 
-import com.kms.katalon.core.webui.common.WebUiCommonHelper
-import com.kms.katalon.core.webui.driver.DriverFactory
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.WebElement
-import org.openqa.selenium.By.ByClassName
+import java.text.MessageFormat
+
 import org.openqa.selenium.By.ById
 import org.openqa.selenium.By.ByTagName
-import org.openqa.selenium.By.ByXPath
-import org.openqa.selenium.By
-import org.openqa.selenium.JavascriptExecutor
 
-public class KatalonExtension {
 
-	/*
-	 public static Boolean IsVisible(WebElement element, By by)
-	 {
-	 try
-	 {
-	 return element.findElement(by).displayed;
-	 }
-	 catch (NoSuchElementException)
-	 {
-	 return false;
-	 }
-	 }*/
+/**
+ *  Roadmap
+ * 
+ */
+public class XrmDialogPage {
 
-	public static Boolean hasElement(WebDriver driver, By by) {
-		try {
-			return driver.findElements(by).size() > 0;
-		}
-		catch (NoSuchElementException) {
-			return false;
-		}
+
+	static WebDriver driver = DriverFactory.getWebDriver()
+
+	@Keyword
+	public boolean Deactivate(int thinkTime) {
+		WebUI.delay(thinkTime)
+
+		driver.switchTo().defaultContent()
+		
+		WebUI.switchToFrame(findTestObject('Dialog/InlineDialog_Iframe'), thinkTime)
+		
+		// TODO end this nightmare dialog.... picklist is identified as a nvarchar...
+		
 	}
 }

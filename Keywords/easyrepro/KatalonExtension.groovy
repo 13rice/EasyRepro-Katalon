@@ -1,4 +1,4 @@
-package gerico
+package easyrepro
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
@@ -25,8 +25,38 @@ import MobileBuiltInKeywords as Mobile
 import WSBuiltInKeywords as WS
 import WebUiBuiltInKeywords as WebUI
 
-public class Constants {
-	def public static int DefaultThinkTime = 2
+import com.kms.katalon.core.webui.common.WebUiCommonHelper
+import com.kms.katalon.core.webui.driver.DriverFactory
+import org.openqa.selenium.WebDriver
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.By.ByClassName
+import org.openqa.selenium.By.ById
+import org.openqa.selenium.By.ByTagName
+import org.openqa.selenium.By.ByXPath
+import org.openqa.selenium.By
+import org.openqa.selenium.JavascriptExecutor
 
-	def public static int WaitTimeOut = 2
+public class KatalonExtension {
+
+	/*
+	 public static Boolean IsVisible(WebElement element, By by)
+	 {
+	 try
+	 {
+	 return element.findElement(by).displayed;
+	 }
+	 catch (NoSuchElementException)
+	 {
+	 return false;
+	 }
+	 }*/
+
+	public static Boolean hasElement(WebDriver driver, By by) {
+		try {
+			return driver.findElements(by).size() > 0;
+		}
+		catch (NoSuchElementException) {
+			return false;
+		}
+	}
 }
