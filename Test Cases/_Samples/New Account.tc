@@ -10,21 +10,21 @@
       <description></description>
       <id>0ffb1f26-c586-40a0-aa59-2d5b1f518338</id>
       <masked>false</masked>
-      <name>raisonSociale</name>
+      <name>name</name>
    </variable>
    <variable>
       <defaultValue>'00000'</defaultValue>
       <description></description>
       <id>da6a771b-1cc7-4e86-850f-67fa4a9fbf35</id>
       <masked>false</masked>
-      <name>codePostal</name>
+      <name>postalCode</name>
    </variable>
    <variable>
       <defaultValue>'LOCALITE_VIDE'</defaultValue>
       <description></description>
       <id>6a1b184a-bf15-4ea6-ae9b-d21ca24813ee</id>
       <masked>false</masked>
-      <name>localite</name>
+      <name>city</name>
    </variable>
    <variable>
       <defaultValue>true</defaultValue>

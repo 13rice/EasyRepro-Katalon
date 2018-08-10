@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>Open Account</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>89d792fb-5642-437c-ab93-cbd33787992f</testCaseGuid>
+   <variable>
+      <defaultValue>'AUCHAN'</defaultValue>
+      <description></description>
+      <id>55d46f76-5439-494f-8be3-cb0aad02f033</id>
+      <masked>false</masked>
+      <name>accountName</name>
+   </variable>
+</TestCaseEntity>

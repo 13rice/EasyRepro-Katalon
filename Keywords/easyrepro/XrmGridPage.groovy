@@ -61,10 +61,10 @@ import org.openqa.selenium.By.ByTagName
  *
  */
 public class XrmGridPage {
-	
-	
+
+
 	static WebDriver driver = DriverFactory.getWebDriver()
-	
+
 	/// <summary>
 	/// Searches the specified search criteria.
 	/// </summary>
@@ -77,7 +77,7 @@ public class XrmGridPage {
 		WebUI.delay(thinkTime)
 
 		WebUI.waitForElementClickable(findTestObject("Reference/Grid/FindCriteria"), thinkTime)
-		
+
 		WebUI.clearText(findTestObject("Reference/Grid/FindCriteria"))
 		WebUI.sendKeys(findTestObject("Reference/Grid/FindCriteria"), searchCriteria)
 		WebUI.sendKeys(findTestObject("Reference/Grid/FindCriteria"), Keys.chord(Keys.ENTER))
@@ -86,25 +86,23 @@ public class XrmGridPage {
 	}
 
 	/*
-	/// <summary>
-	/// Sorts the specified column name.
-	/// </summary>
-	/// <param name="columnName">Name of the column.</param>
-	/// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-	/// <example>xrmBrowser.Grid.Sort("Account Name")</example>
-	public static boolean Sort(string columnName,int thinkTime = Constants.DefaultThinkTime)
-	{
-		Browser.ThinkTime(thinkTime)
-
-		def sortCols = driver.FindElements(By.ClassName(Elements.CssClass[Reference.Grid.SortColumn]))
-		def sortCol = sortCols.FirstOrDefault(x => x.Text == columnName)
-		
-		if (sortCol == null)
-			throw new InvalidOperationException($"Column: {columnName} Does not exist")
-		else
-			sortCol.Click()
-		return true
-	}*/
+	 /// <summary>
+	 /// Sorts the specified column name.
+	 /// </summary>
+	 /// <param name="columnName">Name of the column.</param>
+	 /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
+	 /// <example>xrmBrowser.Grid.Sort("Account Name")</example>
+	 public static boolean Sort(string columnName,int thinkTime = Constants.DefaultThinkTime)
+	 {
+	 Browser.ThinkTime(thinkTime)
+	 def sortCols = driver.FindElements(By.ClassName(Elements.CssClass[Reference.Grid.SortColumn]))
+	 def sortCol = sortCols.FirstOrDefault(x => x.Text == columnName)
+	 if (sortCol == null)
+	 throw new InvalidOperationException($"Column: {columnName} Does not exist")
+	 else
+	 sortCol.Click()
+	 return true
+	 }*/
 
 	/// <summary>
 	/// Opens the grid record.
@@ -136,9 +134,9 @@ public class XrmGridPage {
 				{
 					//adding fix for Firefox click issue
 					/*if (this.Browser.Options.BrowserType == BrowserType.Firefox)
-						driver.ExecuteScript($"document.getElementById('{id}').click()")
-					else*/
-						link.click()
+					 driver.ExecuteScript($"document.getElementById('{id}').click()")
+					 else*/
+					link.click()
 
 					clicked = true
 
@@ -154,16 +152,16 @@ public class XrmGridPage {
 			if (rowType != "report")
 			{
 				/*SwitchToContent()
-				driver.WaitForPageToLoad()
-				driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Entity.Form]))*/
+				 driver.WaitForPageToLoad()
+				 driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Entity.Form]))*/
 			}
 			return true
 		}
 		else
 		{
-		   throw new InvalidOperationException("No record with the index '" + index + "' exists.")
+			throw new InvalidOperationException("No record with the index '" + index + "' exists.")
 		}
-		
+
 		return true
 	}
 }
