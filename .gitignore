@@ -18,7 +18,7 @@ Test Suites/*
 
 Test Cases/*
 !Test Cases/_Samples
-!Test Cases/Login
+!Test Cases/Login.tc
 
 Object Repository/*
 !Object Repository/Dialog
