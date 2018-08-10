@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>SaveFooter</name>
+   <tag></tag>
+   <elementGuidId>d8ed0cc9-f817-4c1c-8aa4-f3a055945c10</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>BASIC</key>
+         <value>id(&quot;footer_statuscontrol&quot;)/div[@title=&quot;Enregistrer&quot;]/a</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>BASIC</selectorMethod>
+   <useRalativeImagePath>false</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>title</name>
+      <type>Main</type>
+      <value>&quot;Enregistrer&quot;</value>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;footer_statuscontrol&quot;)/div[@title=&quot;Enregistrer&quot;]/a</value>
+   </webElementProperties>
+</WebElementEntity>

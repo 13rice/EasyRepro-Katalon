@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>New Account</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>e9108c94-8943-4e0b-95eb-0fe5fd35c8b9</testCaseGuid>
+   <variable>
+      <defaultValue>'RAISON_SOCIALE_VIDE'</defaultValue>
+      <description></description>
+      <id>0ffb1f26-c586-40a0-aa59-2d5b1f518338</id>
+      <masked>false</masked>
+      <name>raisonSociale</name>
+   </variable>
+   <variable>
+      <defaultValue>'00000'</defaultValue>
+      <description></description>
+      <id>da6a771b-1cc7-4e86-850f-67fa4a9fbf35</id>
+      <masked>false</masked>
+      <name>codePostal</name>
+   </variable>
+   <variable>
+      <defaultValue>'LOCALITE_VIDE'</defaultValue>
+      <description></description>
+      <id>6a1b184a-bf15-4ea6-ae9b-d21ca24813ee</id>
+      <masked>false</masked>
+      <name>localite</name>
+   </variable>
+   <variable>
+      <defaultValue>true</defaultValue>
+      <description></description>
+      <id>d33d9d72-7da7-451d-9732-078dcc567a20</id>
+      <masked>false</masked>
+      <name>waitForSave</name>
+   </variable>
+</TestCaseEntity>

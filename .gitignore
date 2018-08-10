@@ -1,0 +1,27 @@
+
+
+*.class
+console.properties
+\.classpath
+\.settings/*
+settings/*
+Data Files/*
+debug.log
+Libs/*
+Reports/*
+Scripts/*
+Profiles/*
+bin/*
+!Profiles/EasyRepro-Sample-Profile.glbl
+
+Test Suites/*
+
+Test Cases/*
+!Test Cases/_Samples
+!Test Cases/Login
+
+Object Repository/*
+!Object Repository/Dialog
+!Object Repository/Entity Page
+!Object Repository/Reference
+!Object Repository/Login Page
