@@ -4,6 +4,7 @@
 console.properties
 \.classpath
 \.settings/*
+\config/*
 settings/*
 Data Files/*
 debug.log
