@@ -15,7 +15,7 @@ Scripts/*
 !Scripts/Login
 Profiles/*
 bin/*
-!Profiles/EasyRepro-Sample-Profile.glbl
+!Profiles/default.glbl
 
 Test Suites/*
 
